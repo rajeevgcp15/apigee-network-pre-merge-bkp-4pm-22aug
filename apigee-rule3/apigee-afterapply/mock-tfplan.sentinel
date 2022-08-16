@@ -1,0 +1,51 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data":      {},
+		"path":      [],
+		"resources": {},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.2.5"
+
+variables = {
+	"google_apigee_envgroup":                "ela-envgroup",
+	"google_apigee_environment":             "ela-environment",
+	"google_apigee_instance":                "apigee-org-instance-us-east12",
+	"google_compute_forwarding_rule":        "apigee-forwarding-rule2",
+	"google_compute_global_address":         "apigee-range2",
+	"google_compute_health_check":           "ela-health-check1",
+	"google_compute_region_backend_service": "producer-service2",
+	"network":    "elak-network",
+	"project_id": "internal-test-prj-ly",
+	"region":     "us-east1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

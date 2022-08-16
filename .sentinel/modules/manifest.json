@@ -1,0 +1,28 @@
+{
+	"records": [
+		{
+			"key": "tfplan-functions",
+			"source": "./common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/16aug2022/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "tfstate-functions",
+			"source": "./common-functions/tfstate-functions/tfstate-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/16aug2022/apigee-network/common-functions/tfstate-functions/tfstate-functions.sentinel"
+		},
+		{
+			"key": "tfconfig-functions",
+			"source": "./common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/16aug2022/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+		},
+		{
+			"key": "generic-functions",
+			"source": "./common-functions/generic-functions/generic-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/16aug2022/apigee-network/common-functions/generic-functions/generic-functions.sentinel"
+		}
+	]
+}

@@ -1,0 +1,164 @@
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfconfig-functions" as tfconfig
+import "tfplan/v2" as tfplan2
+import "tfplan-functions" as plan
+import "strings"
+import "types"
+
+# Get all Apigee Organization
+allApigeeOrganizationTfplan = plan.find_resources("google_apigee_organization")
+allApigeeOrganizationTfconfig = tfconfig.find_resources_by_type("google_apigee_organization")
+allApigeeNetworks = plan.find_resources("google_compute_network")
+allProviders = tfconfig.find_all_providers()
+
+//allVariables = plan.find_all_variables()
+
+find_all_variables = func() {
+	return tfplan2.variables
+}
+allVariables = find_all_variables()
+
+//print(allVariables)
+//print(allApigeeNetworks)
+
+//print(allProviders)
+//print(allVariables)
+
+tfconfig_org_name_network_map = {}
+for allApigeeOrganizationTfconfig as address, rc {
+	a_network_tfcon = tfconfig.evaluate_attribute(rc.config.authorized_network, "references")
+	name_tfcon = tfconfig.evaluate_attribute(rc, "name")
+	//print(a_network_tfcon [0])
+	net_name = strings.split(a_network_tfcon[0], ".")
+	//print(net_name[1])
+	tfconfig_org_name_network_map[name_tfcon] = net_name[1]
+}
+
+print("tfconfig_org_name_network_map:==>" + plan.to_string(tfconfig_org_name_network_map))
+
+//print(allApigeeOrganizationTfplan)
+//print(allApigeeOrganizationTfconfig)
+
+#============network project map=============
+tfplan_network_project_map = {}
+for allApigeeNetworks as address, rc {
+	network_project_name = plan.evaluate_attribute(rc, "project")
+	network_name_var = rc.address
+	network_name_add = strings.split(network_name_var, ".")
+	network_name = network_name_add[1]
+	//print("network_name:==> " +plan.to_string(network_name))
+	//print("ggggggg")
+	//print(network_project_name)
+	if (types.type_of(network_project_name) is "undefined" or types.type_of(network_project_name) is "null") {
+		provider_name = rc.provider_name
+		provider_arr = strings.split(provider_name, "/")
+		provider = provider_arr[2]
+		print(provider)
+		//print("provider_name:" + plan.to_string(provider_name))
+		//print("provider:" + plan.to_string(provider))
+		for allProviders as add, rt {
+			//print("add--->"+plan.to_string(add))
+			if (add == provider) {
+				//project_id = tfconfig.evaluate_attribute(rt,"project")
+				project_id = rt.config.project
+				print(project_id)
+				//project_id_arr = strings.split(project_id,":")
+				//print("Constant-project_value: ==> "+plan.to_string(project_id.constant_value))
+				project_name = project_id.constant_value
+
+				if (types.type_of(project_name) is "undefined") {
+					p_name = project_id.references[0]
+					print(p_name)
+					p_name_arr = strings.split(p_name, ".")
+					p_name_var = p_name_arr[1]
+					for allVariables as ad, rtt {
+						if (ad == p_name_var) {
+							//print("FFFound")
+							//print(rtt)
+							project_name = rtt.value
+							print("Var project :==>" + plan.to_string(project_name))
+							tfplan_network_project_map[network_name] = project_name
+						}
+					}
+				} else {
+
+					tfplan_network_project_map[network_name] = project_name
+
+				}
+
+			}
+		}
+
+	} else {
+        tfplan_network_project_map[network_name] = network_project_name
+    }
+	//tfplan_network_project_map [network_name] = project_name_main
+	//print("project_name_main2==>"+plan.to_string(project_name_main))
+}
+
+print("tfplan_network_project_map: ==> " + plan.to_string(tfplan_network_project_map))
+
+#============================================
+
+#=======org name --> project map ============
+tfplan_org_project_map = {}
+for allApigeeOrganizationTfplan as address, rc {
+	add_org = rc.address
+	add_org_arr = strings.split(add_org, ".")
+	add_org_main = add_org_arr[1]
+	print("hhhhahhahhaha:==>" + plan.to_string(add_org_main))
+	project_org = plan.evaluate_attribute(rc, "project_id")
+	tfplan_org_project_map[add_org_main] = project_org
+
+}
+print("tfplan_org_project_map ==> " + plan.to_string(tfplan_org_project_map))
+
+#============================================
+messages_apigee_auth_net = {}
+for allApigeeOrganizationTfplan as address, rc {
+
+	apigee_auth_net = plan.evaluate_attribute(rc, "authorized_network")
+	org_project = plan.evaluate_attribute(rc, "project_id")
+	print(apigee_auth_net)
+	//a =  types.type_of(apigee_auth_net)
+	//print(a)
+	if (types.type_of(apigee_auth_net) == "null" or types.type_of(apigee_auth_net) == "undefined") {
+		print("hhhhh")
+		apigee_auth_net_unknown_after = plan.evaluate_attribute(rc.change.after_unknown, "authorized_network")
+		print(apigee_auth_net_unknown_after)
+
+		if (types.type_of(apigee_auth_net_unknown_after) == "null" or types.type_of(apigee_auth_net_unknown_after) == "undefined") {
+			print("Authorized network not defined for resource: " + address)
+			messages_apigee_auth_net[address] = rc
+		} else {
+			add_org = rc.address
+			add_org_arr = strings.split(add_org, ".")
+			add_org_main = add_org_arr[1]
+			apigee_org_project = tfplan_org_project_map[add_org_main]
+			print("apigee_org_project:==> " + plan.to_string(apigee_org_project))
+			apigee_org_network_project = tfplan_network_project_map[tfconfig_org_name_network_map[add_org_main]]
+			print("apigee_org_network_project: ==> " + plan.to_string(apigee_org_network_project))
+
+			if apigee_org_network_project == apigee_org_network_project {
+				print("The ORG project and Network Project can't be Same for resource: " + address)
+				messages_apigee_auth_net[address] = rc
+			}
+		}
+
+	} else {
+		org_auth_network_arr = strings.split(apigee_auth_net, "/")
+		org_auth_network = org_auth_network_arr[1]
+		print("Auth Network Present :==> " + plan.to_string(org_auth_network))
+        print("ORG Project: ==> "+plan.to_string(org_project))
+		if org_project == org_auth_network {
+			print("The ORG project and Network Project can't be Same for resource: " + address)
+			messages_apigee_auth_net[address] = rc
+		}
+
+	}
+
+}
+GCP_APIGEE_NETWORK = rule {length(messages_apigee_auth_net) is 0}
+
+main = rule { GCP_APIGEE_NETWORK }
