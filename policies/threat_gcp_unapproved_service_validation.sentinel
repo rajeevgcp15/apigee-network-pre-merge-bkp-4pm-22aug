@@ -1,0 +1,146 @@
+# This policy enforces the validation of unapproved services to be deployed
+# These sentinel policies enforce Wells Fargo security principles
+
+# Import common-functions/tfplan-functions/tfplan-functions.sentinel
+# with alias "plan"
+import "tfplan/v2" as tfplan
+
+approved_services = [
+	"google_dataproc_cluster",
+	"google_bigquery_dataset",
+	"google_bigquery_table",
+	"google_dialogflow_cx_agent",
+	"google_container_cluster",
+	"google_secret_manager_secret",
+	"google_data_loss_prevention_deidentify_template",
+	"google_pubsub_topic",
+	"google_compute_global_forwarding_rule",
+	"google_compute_forwarding_rule",
+	"google_compute_network",
+	"google_dns_managed_zone",
+	"google_compute_firewall",
+	"google_kms_key_ring",
+	"google_kms_crypto_key",
+	"google_kms_key_ring_import_job",
+	"google_cloudfunctions_function",
+	"google_storage_bucket",
+	"google_compute_interconnect_attachment",
+	"google_datastore_index",
+	"google_firestore_document",
+	"google_spanner_instance",
+	"google_spanner_database",
+	"google_compute_health_check",
+	"google_compute_region_backend_service",
+	"google_compute_router",
+	"google_compute_subnetwork",
+	"google_service_account",
+	"google_folder_iam_policy",
+	"google_folder_iam_binding",
+	"google_folder_iam_member",
+	"google_organization_iam_policy",
+	"google_organization_iam_binding",
+	"google_organization_iam_member",
+	"google_project_iam_policy",
+	"google_project_iam_binding",
+	"google_project_iam_member",
+	"google_service_account_iam_policy",
+	"google_service_account_iam_binding",
+	"google_service_account_iam_member",
+	"google_compute_route",
+	"google_data_loss_prevention_job_trigger",
+	"google_kms_crypto_key_iam_member",
+	"google_pubsub_topic_iam_member",
+	"google_pubsub_subscription",
+	"google_sql_database_instance",
+	"google_sql_database",
+	"google_sql_user",
+	"google_vpc_access_connector",
+	"google_cloudfunctions_function_iam_member",
+	"google_api_gateway_gateway",
+	"google_api_gateway_api_config",
+	"google_api_gateway_api",
+	"google_storage_bucket_object",
+	"google_data_loss_prevention_inspect_template",
+	"google_compute_region_instance_group_manager",
+	"google_compute_region_url_map",
+	"google_compute_region_target_https_proxy",
+	"google_compute_region_health_check",
+	"google_dns_record_set",
+	"google_logging_project_sink",
+	"google_container_node_pool",
+	"google_logging_project_bucket_config",
+	"google_monitoring_notification_channel",
+	"google_monitoring_alert_policy",
+	"google_scc_notification_config",
+	"google_dialogflow_cx_intent",
+	"google_container_analysis_note",
+	"google_binary_authorization_attestor",
+	"google_compute_region_ssl_certificate",
+	"google_compute_network_peering",
+	"google_dns_policy",
+	"google_compute_firewall_policy",
+	"google_compute_firewall_policy_rule",
+	"google_compute_firewall_policy_association",
+	"google_filestore_instance",
+	"google_compute_global_address",
+	"google_service_networking_connection",
+	"google_spanner_database_iam_member",
+	"google_composer_environment",
+	"google_dataflow_job",
+	"google_secret_manager_secret_iam_binding",
+	"google_bigquery_data_transfer_config",	
+	"google_privateca_ca_pool",
+	"google_privateca_certificate",
+	"google_privateca_certificate_authority",
+	"google_kms_crypto_key_iam_policy",
+	"google_notebooks_environment",
+	"google_notebooks_instance",
+	"google_notebooks_instance_iam_policy",
+	"google_notebooks_runtime",
+	"google_notebooks_runtime_iam_policy",
+	"google_vertex_ai_dataset",
+	"google_vertex_ai_featurestore",
+	"google_vertex_ai_featurestore_entitytype",
+	"google_data_catalog_tag_template",
+	"google_data_catalog_taxonomy",
+	"google_data_catalog_policy_tag",
+	"google_data_catalog_entry_group",
+	"google_data_catalog_entry",
+	"google_data_catalog_tag",
+	"google_data_catalog_entry_group_iam_policy",
+	"google_data_catalog_taxonomy_iam_policy",
+	"google_data_catalog_policy_tag_iam_policy",
+	"google_data_catalog_tag_template_iam_policy",
+	"google_apigee_envgroup",
+	"google_apigee_environment",
+	"google_apigee_instance",
+	"google_apigee_instance_attachment",
+	"google_apigee_organization",
+	"google_compute_service_attachment",
+	"google_project_service",
+]
+
+find_resources = func() {
+	resources = filter tfplan.resource_changes as address, rc {
+		rc.mode is "managed" and
+			(rc.change.actions contains "create" or rc.change.actions contains "update" or
+				rc.change.actions contains "read" or
+				rc.change.actions contains "no-op")
+	}
+	return resources
+}
+
+all_resources = find_resources()
+
+messages = {}
+for all_resources as address, rc {
+	type = rc["type"]
+	if type not in approved_services {
+		messages[address] = "Resource of type " + type + " is not allowed"
+	}
+}
+
+print(messages)
+UNAPPROVED_SERVICES = rule { length(messages) is 0 }
+
+main = rule { UNAPPROVED_SERVICES }
