@@ -180,7 +180,7 @@ resourceTypesNameMap = {
 	"google_bigquery_data_transfer_config": {
 		"name_param":     "display_name",
 		"name_substring": "bqt",
-	},	
+	},
 	"google_privateca_certificate_authority": {
 		"name_param":     "certificate_authority_id",
 		"name_substring": "ca",
@@ -192,7 +192,7 @@ resourceTypesNameMap = {
 	"google_privateca_certificate": {
 		"name_param":     "name",
 		"name_substring": "ca",
-	},	
+	},
 	"google_notebooks_instance": {
 		"name_param":     "name",
 		"name_substring": "vtx",
@@ -208,7 +208,7 @@ resourceTypesNameMap = {
 	"google_vertex_ai_featurestore": {
 		"name_param":     "name",
 		"name_substring": "vtx",
-	},	
+	},
 	"google_vertex_ai_featurestore_entitytype": {
 		"name_param":     "name",
 		"name_substring": "vtx",
@@ -245,19 +245,19 @@ resourceTypesNameMap = {
 		"name_param":     "name",
 		"name_substring": "cb",
 	},
-    "google_apigee_organization": {
+	"google_apigee_organization": {
 		"name_param":     "display_name",
 		"name_substring": "agx",
 	},
-    "google_apigee_instance": {
+	"google_apigee_instance": {
 		"name_param":     "name",
 		"name_substring": "agx",
 	},
-    "google_apigee_environment": {
+	"google_apigee_environment": {
 		"name_param":     "name",
 		"name_substring": "agx",
 	},
-    "google_apigee_envgroup": {
+	"google_apigee_envgroup": {
 		"name_param":     "name",
 		"name_substring": "agx",
 	},
