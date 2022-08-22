@@ -16,7 +16,7 @@ module "generic-functions" {
 
 mock "tfplan/v2" {
   module {
-    source = "naming-mocks/mock-tfplan-v2.sentinel"
+    source = "apigee-rule3/apigee-afterapply/mock-tfplan-v2.sentinel"
   }
 }
 /*
@@ -25,48 +25,9 @@ mock "tfstate/v2" {
     source = "mocks/mock5-algo-pass/mock-tfstate-v2.sentinel"
   }
 }
+*/
 mock "tfconfig/v2" {
   module {
     source = "apigee-rule3/apigee-afterapply/mock-tfconfig-v2.sentinel"
   }
-}
-*/
-param "org" {
-  value = [ "wf" ]
-}
-
-param "country" {
-  value = [ "us" ]
-}
-
-param "gcp_region" {
-  value = [ "US" ]
-}
-
-param "owner" {
-  value = ["hybridenv"] 
-}
-
-param "application_division" {
-  value =  ["pci", "paa", "hdpa", "hra", "others"]
-}
-
-param "application_name" {
-  value =  ["app1","demo"]
-}
-
-param "application_role" {
-  value = ["app", "web", "auth", "data"]
-}
-
-param "environment" {
-  value =   ["prod", "nonprod", "sandbox", "core"] 
-}
-
-param "au" {
-  value = [ "0223092" ]
-}
-
-param "prefix" {
-    value = "us-"
 }

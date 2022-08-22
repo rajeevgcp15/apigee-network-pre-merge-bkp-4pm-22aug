@@ -1,0 +1,1582 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"google_apigee_envgroup": {
+				"env_grp_dev1": {
+					0: {
+						"applied": {
+							"hostnames": [
+								"grp.test.com",
+							],
+							"name":     "prod-envgroup",
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"hostnames.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"hostnames.0": {
+								"computed": false,
+								"new":      "grp.test.com",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "prod-envgroup",
+								"old":      "",
+							},
+							"org_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_apigee_environment": {
+				"apigee_org_region_env1": {
+					0: {
+						"applied": {
+							"description":  "apigee-env-dev",
+							"display_name": "apigee-env-dev",
+							"name":         "prod",
+							"timeouts":     null,
+						},
+						"destroy": false,
+						"diff": {
+							"api_proxy_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"deployment_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "apigee-env-dev",
+								"old":      "",
+							},
+							"display_name": {
+								"computed": false,
+								"new":      "apigee-env-dev",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "prod",
+								"old":      "",
+							},
+							"org_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_apigee_instance": {
+				"apigee_instance1": {
+					0: {
+						"applied": {
+							"description":              null,
+							"disk_encryption_key_name": null,
+							"display_name":             null,
+							"ip_range":                 null,
+							"location":                 "us-east1",
+							"name":                     "prod-agx-instance123",
+							"timeouts":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"consumer_accept_list.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"disk_encryption_key_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"display_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"host": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_range": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "us-east1",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "prod-agx-instance123",
+								"old":      "",
+							},
+							"org_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"peering_cidr_range": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"port": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"service_attachment": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_apigee_instance_attachment": {
+				"apigee_instance_attachment1": {
+					0: {
+						"applied": {
+							"environment": "prod",
+							"timeouts":    null,
+						},
+						"destroy": false,
+						"diff": {
+							"environment": {
+								"computed": false,
+								"new":      "prod",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instance_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_apigee_organization": {
+				"apigee_org": {
+					0: {
+						"applied": {
+							"analytics_region":                     null,
+							"description":                          null,
+							"display_name":                         null,
+							"project_id":                           "spatial-ship-354209",
+							"runtime_database_encryption_key_name": null,
+							"runtime_type":                         "CLOUD",
+							"timeouts":                             null,
+						},
+						"destroy": false,
+						"diff": {
+							"analytics_region": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"authorized_network": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"billing_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ca_certificate": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"display_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project_id": {
+								"computed": false,
+								"new":      "spatial-ship-354209",
+								"old":      "",
+							},
+							"runtime_database_encryption_key_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"runtime_type": {
+								"computed": false,
+								"new":      "CLOUD",
+								"old":      "",
+							},
+							"subscription_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+				"apigeex_org": {
+					0: {
+						"applied": {
+							"analytics_region":                     "us-east1",
+							"description":                          null,
+							"display_name":                         "wf",
+							"project_id":                           "internal-test-prj-ly",
+							"runtime_database_encryption_key_name": null,
+							"runtime_type":                         "CLOUD",
+							"timeouts":                             null,
+						},
+						"destroy": false,
+						"diff": {
+							"analytics_region": {
+								"computed": false,
+								"new":      "us-east1",
+								"old":      "",
+							},
+							"authorized_network": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"billing_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ca_certificate": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"display_name": {
+								"computed": false,
+								"new":      "wf",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project_id": {
+								"computed": false,
+								"new":      "internal-test-prj-ly",
+								"old":      "",
+							},
+							"runtime_database_encryption_key_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"runtime_type": {
+								"computed": false,
+								"new":      "CLOUD",
+								"old":      "",
+							},
+							"subscription_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_forwarding_rule": {
+				"apigee_ilb_target_service": {
+					0: {
+						"applied": {
+							"all_ports":              true,
+							"allow_global_access":    null,
+							"description":            null,
+							"is_mirroring_collector": null,
+							"labels":                 null,
+							"load_balancing_scheme":  "INTERNAL",
+							"name":                   "shared-forwarding-rule",
+							"port_range":             null,
+							"ports":                  null,
+							"project":                "spatial-ship-354209",
+							"region":                 "us-east1",
+							"service_label":          null,
+							"target":                 null,
+							"timeouts":               null,
+						},
+						"destroy": false,
+						"diff": {
+							"all_ports": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"allow_global_access": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"backend_service": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"creation_timestamp": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_protocol": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"is_mirroring_collector": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"label_fingerprint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"labels": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"load_balancing_scheme": {
+								"computed": false,
+								"new":      "INTERNAL",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "shared-forwarding-rule",
+								"old":      "",
+							},
+							"network": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"network_tier": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"port_range": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ports": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "spatial-ship-354209",
+								"old":      "",
+							},
+							"psc_connection_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"psc_connection_status": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": false,
+								"new":      "us-east1",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"service_directory_registrations.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"service_label": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"service_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"subnetwork": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"target": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_global_address": {
+				"apigee_range1": {
+					0: {
+						"applied": {
+							"address_type":  "INTERNAL",
+							"description":   null,
+							"ip_version":    null,
+							"name":          "shared-range",
+							"prefix_length": 16,
+							"purpose":       "VPC_PEERING",
+							"timeouts":      null,
+						},
+						"destroy": false,
+						"diff": {
+							"address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"address_type": {
+								"computed": false,
+								"new":      "INTERNAL",
+								"old":      "",
+							},
+							"creation_timestamp": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_version": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "shared-range",
+								"old":      "",
+							},
+							"network": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"prefix_length": {
+								"computed": false,
+								"new":      "16",
+								"old":      "",
+							},
+							"project": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"purpose": {
+								"computed": false,
+								"new":      "VPC_PEERING",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_health_check": {
+				"producer_service_health_check": {
+					0: {
+						"applied": {
+							"check_interval_sec": 1,
+							"description":        null,
+							"grpc_health_check":  [],
+							"healthy_threshold":  2,
+							"http2_health_check": [],
+							"http_health_check":  [],
+							"https_health_check": [],
+							"name":               "sharedproducer-service-health-check",
+							"project":            "spatial-ship-354209",
+							"ssl_health_check":   [],
+							"tcp_health_check": [
+								{
+									"port":               80,
+									"port_name":          null,
+									"port_specification": null,
+									"proxy_header":       "NONE",
+									"request":            null,
+									"response":           null,
+								},
+							],
+							"timeout_sec":         1,
+							"timeouts":            null,
+							"unhealthy_threshold": 2,
+						},
+						"destroy": false,
+						"diff": {
+							"check_interval_sec": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"creation_timestamp": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"grpc_health_check.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"healthy_threshold": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"http2_health_check.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"http_health_check.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"https_health_check.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"log_config.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "sharedproducer-service-health-check",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "spatial-ship-354209",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ssl_health_check.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"tcp_health_check.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"tcp_health_check.0.%": {
+								"computed": false,
+								"new":      "6",
+								"old":      "",
+							},
+							"tcp_health_check.0.port": {
+								"computed": false,
+								"new":      "80",
+								"old":      "",
+							},
+							"tcp_health_check.0.port_name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tcp_health_check.0.port_specification": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tcp_health_check.0.proxy_header": {
+								"computed": false,
+								"new":      "NONE",
+								"old":      "",
+							},
+							"tcp_health_check.0.request": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tcp_health_check.0.response": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeout_sec": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"unhealthy_threshold": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_network": {
+				"apigee_network1": {
+					0: {
+						"applied": {
+							"auto_create_subnetworks":         true,
+							"delete_default_routes_on_create": false,
+							"description":                     null,
+							"enable_ula_internal_ipv6":        null,
+							"name":     "shared-network",
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"auto_create_subnetworks": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"delete_default_routes_on_create": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"enable_ula_internal_ipv6": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"gateway_ipv4": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"internal_ipv6_range": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"mtu": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "shared-network",
+								"old":      "",
+							},
+							"project": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"routing_mode": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_region_backend_service": {
+				"producer_service_backend": {
+					0: {
+						"applied": {
+							"affinity_cookie_ttl_sec":         null,
+							"backend":                         [],
+							"circuit_breakers":                [],
+							"connection_draining_timeout_sec": 0,
+							"consistent_hash":                 [],
+							"description":                     null,
+							"enable_cdn":                      null,
+							"failover_policy":                 [],
+							"iap":                             [],
+							"load_balancing_scheme": "INTERNAL",
+							"locality_lb_policy":    null,
+							"name":                  "agx",
+							"network":               null,
+							"outlier_detection":     [],
+							"project":               "spatial-ship-354209",
+							"region":                "us-east1",
+							"timeouts":              null,
+						},
+						"destroy": false,
+						"diff": {
+							"affinity_cookie_ttl_sec": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"backend.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"cdn_policy.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"circuit_breakers.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"connection_draining_timeout_sec": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"consistent_hash.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"creation_timestamp": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"enable_cdn": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"failover_policy.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"fingerprint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"health_checks.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"iap.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"load_balancing_scheme": {
+								"computed": false,
+								"new":      "INTERNAL",
+								"old":      "",
+							},
+							"locality_lb_policy": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"log_config.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "agx",
+								"old":      "",
+							},
+							"network": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"outlier_detection.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"port_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "spatial-ship-354209",
+								"old":      "",
+							},
+							"protocol": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": false,
+								"new":      "us-east1",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"session_affinity": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeout_sec": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_service_attachment": {
+				"psc_ilb_service_attachment": {
+					0: {
+						"applied": {
+							"connection_preference": "ACCEPT_AUTOMATIC",
+							"consumer_accept_lists": [],
+							"consumer_reject_lists": null,
+							"description":           null,
+							"domain_names":          null,
+							"enable_proxy_protocol": true,
+							"name":                  "shared-attachment",
+							"region":                "us-east1",
+							"timeouts":              null,
+						},
+						"destroy": false,
+						"diff": {
+							"connected_endpoints.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"connection_preference": {
+								"computed": false,
+								"new":      "ACCEPT_AUTOMATIC",
+								"old":      "",
+							},
+							"consumer_accept_lists.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"consumer_reject_lists": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"domain_names": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"enable_proxy_protocol": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"fingerprint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "shared-attachment",
+								"old":      "",
+							},
+							"nat_subnets.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": false,
+								"new":      "us-east1",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"target_service": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_compute_subnetwork": {
+				"psc_ilb_nat": {
+					0: {
+						"applied": {
+							"description":      null,
+							"ip_cidr_range":    "10.56.0.0/22",
+							"ipv6_access_type": null,
+							"log_config":       [],
+							"name":             "shared-sub",
+							"private_ip_google_access": null,
+							"project":                  "internal-test-prj-ly",
+							"purpose":                  "PRIVATE_SERVICE_CONNECT",
+							"region":                   "us-east1",
+							"role":                     null,
+							"timeouts":                 null,
+						},
+						"destroy": false,
+						"diff": {
+							"creation_timestamp": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"description": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"external_ipv6_prefix": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"fingerprint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"gateway_address": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ip_cidr_range": {
+								"computed": false,
+								"new":      "10.56.0.0/22",
+								"old":      "",
+							},
+							"ipv6_access_type": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"ipv6_cidr_range": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"log_config.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "shared-sub",
+								"old":      "",
+							},
+							"network": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ip_google_access": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"private_ipv6_google_access": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "internal-test-prj-ly",
+								"old":      "",
+							},
+							"purpose": {
+								"computed": false,
+								"new":      "PRIVATE_SERVICE_CONNECT",
+								"old":      "",
+							},
+							"region": {
+								"computed": false,
+								"new":      "us-east1",
+								"old":      "",
+							},
+							"role": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"secondary_ip_range.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"self_link": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"stack_type": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_project_service": {
+				"apis": {
+					"apigee.googleapis.com": {
+						"applied": {
+							"disable_dependent_services": null,
+							"disable_on_destroy":         false,
+							"project":                    "internal-test-prj-ly",
+							"service":                    "apigee.googleapis.com",
+							"timeouts":                   null,
+						},
+						"destroy": false,
+						"diff": {
+							"disable_dependent_services": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_on_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "internal-test-prj-ly",
+								"old":      "",
+							},
+							"service": {
+								"computed": false,
+								"new":      "apigee.googleapis.com",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+					"cloudkms.googleapis.com": {
+						"applied": {
+							"disable_dependent_services": null,
+							"disable_on_destroy":         false,
+							"project":                    "internal-test-prj-ly",
+							"service":                    "cloudkms.googleapis.com",
+							"timeouts":                   null,
+						},
+						"destroy": false,
+						"diff": {
+							"disable_dependent_services": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_on_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "internal-test-prj-ly",
+								"old":      "",
+							},
+							"service": {
+								"computed": false,
+								"new":      "cloudkms.googleapis.com",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+					"compute.googleapis.com": {
+						"applied": {
+							"disable_dependent_services": null,
+							"disable_on_destroy":         false,
+							"project":                    "internal-test-prj-ly",
+							"service":                    "compute.googleapis.com",
+							"timeouts":                   null,
+						},
+						"destroy": false,
+						"diff": {
+							"disable_dependent_services": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_on_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "internal-test-prj-ly",
+								"old":      "",
+							},
+							"service": {
+								"computed": false,
+								"new":      "compute.googleapis.com",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+					"servicenetworking.googleapis.com": {
+						"applied": {
+							"disable_dependent_services": null,
+							"disable_on_destroy":         false,
+							"project":                    "internal-test-prj-ly",
+							"service":                    "servicenetworking.googleapis.com",
+							"timeouts":                   null,
+						},
+						"destroy": false,
+						"diff": {
+							"disable_dependent_services": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_on_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"project": {
+								"computed": false,
+								"new":      "internal-test-prj-ly",
+								"old":      "",
+							},
+							"service": {
+								"computed": false,
+								"new":      "servicenetworking.googleapis.com",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"google_service_networking_connection": {
+				"apigee_vpc_connection": {
+					0: {
+						"applied": {
+							"reserved_peering_ranges": [
+								"shared-range",
+							],
+							"service":  "servicenetworking.googleapis.com",
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"network": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"peering": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"reserved_peering_ranges.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"reserved_peering_ranges.0": {
+								"computed": false,
+								"new":      "shared-range",
+								"old":      "",
+							},
+							"service": {
+								"computed": false,
+								"new":      "servicenetworking.googleapis.com",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "1.2.6"
+
+variables = {
+	"display_name":                          "wf",
+	"google_apigee_envgroup":                "prod-envgroup",
+	"google_apigee_environment":             "prod",
+	"google_apigee_instance":                "prod-agx-instance123",
+	"google_compute_forwarding_rule":        "shared-forwarding-rule",
+	"google_compute_global_address":         "shared-range",
+	"google_compute_health_check":           "sharedproducer-service-health-check",
+	"google_compute_region_backend_service": "agx",
+	"google_compute_service_attachment":     "shared-attachment",
+	"google_compute_subnetwork":             "shared-sub",
+	"network":                               "shared-network",
+	"project_id":                            "internal-test-prj-ly",
+	"project_id2":                           "spatial-ship-354209",
+	"region":                                "us-east1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

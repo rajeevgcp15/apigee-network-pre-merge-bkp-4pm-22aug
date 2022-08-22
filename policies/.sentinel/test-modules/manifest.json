@@ -1,10 +1,28 @@
 {
 	"records": [
 		{
-			"key": "test/apigee-network-rule/apigee-gcp-network-pass-1/tfconfig-functions",
-			"source": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-environment-fail/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
 			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-organization-pass/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-environment-pass/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-instance-fail/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
 		},
 		{
 			"key": "test/apigee-network-rule/apigee-gcp-network-fail-1/tfplan-functions",
@@ -13,25 +31,25 @@
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
 		},
 		{
-			"key": "test/apigee-network-rule/apigee-gcp-network-fail-1/tfconfig-functions",
-			"source": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
-			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
-		},
-		{
-			"key": "test/apigee-network-rule/apigee-gcp-network-pass-2/tfplan-functions",
+			"key": "test/apigee-network-rule/apigee-gcp-network-pass-1/tfplan-functions",
 			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
 			"sourceSum": "",
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
 		},
 		{
-			"key": "test/apigee-network-rule/apigee-gcp-network-pass-2/tfconfig-functions",
-			"source": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"key": "test/apigee-network-rule/apigee-gcp-network-fail-2/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
 			"sourceSum": "",
-			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
 		},
 		{
-			"key": "test/apigee-network-rule/apigee-gcp-network-fail-2/tfplan-functions",
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-envgroup-fail/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-organization-fail/tfplan-functions",
 			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
 			"sourceSum": "",
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
@@ -43,7 +61,43 @@
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
 		},
 		{
-			"key": "test/apigee-network-rule/apigee-gcp-network-pass-1/tfplan-functions",
+			"key": "test/apigee-network-rule/apigee-gcp-network-pass-1/tfconfig-functions",
+			"source": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-organization-null/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/apigee-network-rule/apigee-gcp-network-fail-1/tfconfig-functions",
+			"source": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+		},
+		{
+			"key": "test/apigee-network-rule/apigee-gcp-network-pass-2/tfconfig-functions",
+			"source": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-envgroup-pass/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/assetmgmt_gcp_naming_validation/apigee-instance-pass/tfplan-functions",
+			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
+			"sourceSum": "",
+			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
+		},
+		{
+			"key": "test/apigee-network-rule/apigee-gcp-network-pass-2/tfplan-functions",
 			"source": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel",
 			"sourceSum": "",
 			"dest": "/home/rajeevghosh/WELLS-PHASE3/22aug2022/gcp15/apigee-network/common-functions/tfplan-functions/tfplan-functions.sentinel"
